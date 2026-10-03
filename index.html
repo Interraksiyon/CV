@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musa Berk Gümüş - Game Developer CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts: UnifrakturMaguntia (Gothic/Mörk Borg feel), Oswald (Brutalist Headers), Inter (Clean Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mb_black: '#0a0a0a',
+                        mb_yellow: '#ffe800',
+                        mb_pink: '#ff007f',
+                        mb_white: '#f3f4f6',
+                        mb_gray: '#2d2d2d'
+                    },
+                    fontFamily: {
+                        gothic: ['UnifrakturMaguntia', 'cursive'],
+                        brutal: ['Oswald', 'sans-serif'],
+                        clean: ['Inter', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f3f4f6;
+            selection-background-color: #ffe800;
+            selection-color: #0a0a0a;
+        }
+        ::selection {
+            background-color: #ff007f;
+            color: #fff;
+        }
+        
+        /* Custom Scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+            border-left: 2px solid #2d2d2d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ffe800; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff007f; 
+        }
+
+        .brutal-border {
+            box-shadow: 6px 6px 0px 0px #ffe800;
+            transition: all 0.2s ease;
+        }
+        .brutal-border:hover {
+            box-shadow: 2px 2px 0px 0px #ff007f;
+            transform: translate(4px, 4px);
+        }
+
+        /* --- NEW REACTIVE UI STYLES --- */
+        body {
+            cursor: crosshair;
+        }
+        
+        .name-interactive {
+            transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: inline-block;
+            will-change: transform, text-shadow;
+        }
+        .name-interactive:hover {
+            text-shadow: 5px 5px 0px #ff007f, -5px -2px 0px #ffe800;
+            transform: scale(1.02) skewX(-3deg);
+            color: #fff;
+        }
+
+        .reveal-base {
+            opacity: 0;
+            transform: translateY(40px) skewY(1deg);
+            transition: opacity 0.7s cubic-bezier(0.1, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.1, 0.8, 0.2, 1);
+        }
+        .reveal-base.revealed {
+            opacity: 1;
+            transform: translateY(0) skewY(0);
+        }
+
+        .list-hover-fx li {
+            transition: transform 0.2s ease, color 0.2s ease;
+            will-change: transform;
+        }
+        .list-hover-fx li:hover {
+            transform: translateX(8px);
+            color: #f3f4f6; /* mb_white */
+        }
+        .list-hover-fx li:hover span:first-child {
+            color: #ff007f;
+            transform: scale(1.3);
+            display: inline-block;
+        }
+
+        /* Smooth scroll for the juiced Index navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* --- CONTACT BLOCK EFFECTS --- */
+        .contact-item .value {
+            transform: translateX(-101%);
+            transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+            will-change: transform;
+        }
+        
+        /* Reveal only the hovered individual item immediately */
+        .contact-item:hover .value {
+            transform: translateX(0);
+            transition-delay: 0s !important;
+        }
+        
+        /* Reveal all when the block is locked via header click */
+        #contact-block.locked .contact-item .value {
+            transform: translateX(0);
+        }
+        
+        /* Staggered transition delays for a cool reveal effect */
+        .contact-item:nth-child(2) .value { transition-delay: 0.0s; }
+        .contact-item:nth-child(3) .value { transition-delay: 0.05s; }
+        .contact-item:nth-child(4) .value { transition-delay: 0.1s; }
+        .contact-item:nth-child(5) .value { transition-delay: 0.15s; }
+        .contact-item:nth-child(6) .value { transition-delay: 0.2s; }
+        /* --- END NEW REACTIVE UI STYLES --- */
+
+        /* Print formatting */
+        @media print {
+            body {
+                background-color: white !important;
+                color: black !important;
+                background-image: none !important;
+            }
+            .print-bg-dark {
+                background-color: white !important;
+                color: black !important;
+                border: 2px solid black;
+            }
+            .print-text-dark {
+                color: black !important;
+            }
+            .print-border-dark {
+                border-color: black !important;
+            }
+            .brutal-border {
+                box-shadow: none !important;
+                border: 2px solid black !important;
+            }
+            
+            /* Print rules for masked contact info */
+            .contact-item .value {
+                position: static !important;
+                transform: none !important;
+                background-color: transparent !important;
+                color: black !important;
+                padding: 0 !important;
+            }
+            .contact-item .label, #contact-status {
+                display: none !important;
+            }
+
+            /* Hide print-unfriendly backgrounds but keep the aesthetic structure */
+            .bg-mb_yellow, .bg-mb_pink, .bg-mb_gray {
+                background-color: transparent !important;
+                border: 2px solid black;
+                color: black !important;
+            }
+            .text-mb_yellow, .text-mb_pink {
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-clean bg-mb_black bg-noise antialiased min-h-screen pt-10 pb-40 px-4 sm:px-8 print:py-0 print:px-0">
+
+    <div class="max-w-5xl mx-auto relative z-10">
+        
+        <!-- HEADER -->
+        <header class="border-b-8 border-mb_yellow pb-8 mb-12 flex flex-col md:flex-row gap-8 items-start justify-between print:border-black">
+            <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+                
+                <!-- INDEX (TABLE OF CONTENTS) -->
+                <nav class="flex flex-col border-l-4 border-mb_gray pl-4 py-1 font-mono text-xs uppercase tracking-widest text-gray-500 space-y-3 print:hidden self-start mt-3 relative z-20">
+                    <span class="text-mb_yellow font-bold text-sm tracking-widest mb-1 -ml-4 pl-4 border-l-4 border-mb_yellow">INDEX //</span>
+                    <a href="#summary" class="hover:text-mb_white hover:translate-x-2 transition-all duration-200 flex items-center group">
+                        <span class="text-mb_pink opacity-0 group-hover:opacity-100 transition-all duration-200 -ml-4 group-hover:ml-0 mr-2">▶</span> Summary
+                    </a>
+                    <a href="#experience" class="hover:text-mb_white hover:translate-x-2 transition-all duration-200 flex items-center group">
+                        <span class="text-mb_pink opacity-0 group-hover:opacity-100 transition-all duration-200 -ml-4 group-hover:ml-0 mr-2">▶</span> Experience
+                    </a>
+                    <a href="#projects" class="hover:text-mb_white hover:translate-x-2 transition-all duration-200 flex items-center group">
+                        <span class="text-mb_pink opacity-0 group-hover:opacity-100 transition-all duration-200 -ml-4 group-hover:ml-0 mr-2">▶</span> Projects
+                    </a>
+                    <a href="#skills" class="hover:text-mb_white hover:translate-x-2 transition-all duration-200 flex items-center group">
+                        <span class="text-mb_pink opacity-0 group-hover:opacity-100 transition-all duration-200 -ml-4 group-hover:ml-0 mr-2">▶</span> Skills
+                    </a>
+                </nav>
+
+                <!-- NAME BLOCK -->
+                <div>
+                    <h1 class="font-brutal font-bold text-6xl sm:text-7xl md:text-8xl text-mb_white uppercase leading-none tracking-tight name-interactive print:text-black print:text-shadow-none print:transform-none">
+                        Musa Berk<br><span class="text-mb_yellow print:text-black">Gümüş</span>
+                    </h1>
+                    <h2 class="font-brutal text-2xl sm:text-3xl text-mb_black mt-4 uppercase bg-mb_yellow inline-block px-3 py-1 font-bold print:border-black print:bg-white print:text-black transition-transform hover:-skew-x-6 hover:scale-105">
+                        Game Developer & Multidisciplinary Creator
+                    </h2>
+                </div>
+            </div>
+            
+            <!-- CONTACT BLOCK (Interactive Masked Elements) -->
+            <div id="contact-block" class="font-mono text-sm sm:text-base flex flex-col gap-2 border-l-4 border-mb_pink pl-4 print:border-black print:text-black mt-4 md:mt-0 relative select-none min-w-[280px]">
+                <div id="contact-header" class="text-mb_pink font-bold text-sm tracking-widest mb-1 -ml-4 pl-4 border-l-4 border-mb_pink uppercase cursor-pointer flex justify-between items-center group">
+                    <span>CONTACT INFORMATION //</span>
+                    <span class="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity ml-4 text-mb_white" id="contact-status">[CLICK TO UNLOCK ALL]</span>
+                </div>
+
+                <div class="contact-item block relative overflow-hidden bg-mb_gray print:bg-transparent p-1 cursor-default">
+                    <span class="label text-gray-400 flex items-center gap-2"><span class="text-mb_pink print:hidden">▶</span> Location</span>
+                    <span class="value absolute inset-0 bg-mb_yellow text-mb_black flex items-center gap-2 p-1 font-bold z-10"><span class="text-mb_black print:hidden">▶</span> Ankara, Türkiye</span>
+                </div>
+                
+                <div class="contact-item block relative overflow-hidden bg-mb_gray print:bg-transparent p-1 cursor-default">
+                    <span class="label text-gray-400 flex items-center gap-2"><span class="text-mb_pink print:hidden">▶</span> Personal Email</span>
+                    <a href="#" data-email="berkgumus12@gmail.com" class="copyable-email value absolute inset-0 bg-mb_pink text-white flex items-center gap-2 p-1 font-bold z-10 hover:underline cursor-pointer" title="Click to copy"><span class="text-mb_black print:hidden">▶</span> berkgumus12@gmail.com</a>
+                </div>
+                
+                <div class="contact-item block relative overflow-hidden bg-mb_gray print:bg-transparent p-1 cursor-default">
+                    <span class="label text-gray-400 flex items-center gap-2"><span class="text-mb_pink print:hidden">▶</span> Studio Email</span>
+                    <a href="#" data-email="thelichdeck@gmail.com" class="copyable-email value absolute inset-0 bg-mb_pink text-white flex items-center gap-2 p-1 font-bold z-10 hover:underline cursor-pointer" title="Click to copy"><span class="text-mb_black print:hidden">▶</span> thelichdeck@gmail.com</a>
+                </div>
+                
+                <div class="contact-item block relative overflow-hidden bg-mb_gray print:bg-transparent p-1 cursor-default">
+                    <span class="label text-gray-400 flex items-center gap-2"><span class="text-mb_pink print:hidden">▶</span> GitHub Profile</span>
+                    <a href="https://github.com/Interraksiyon?tab=overview&from=2026-10-01&to=2026-10-03" target="_blank" class="value absolute inset-0 bg-mb_white text-mb_black flex items-center gap-2 p-1 font-bold z-10 hover:underline"><span class="text-mb_pink print:hidden">▶</span> github.com/Interraksiyon</a>
+                </div>
+
+                <div class="contact-item block relative overflow-hidden bg-mb_gray print:bg-transparent p-1 cursor-default">
+                    <span class="label text-gray-400 flex items-center gap-2"><span class="text-mb_pink print:hidden">▶</span> Instagram Profile</span>
+                    <a href="https://www.instagram.com/interaksiyon.bu/?hl=en" target="_blank" class="value absolute inset-0 bg-mb_yellow text-mb_black flex items-center gap-2 p-1 font-bold z-10 hover:underline"><span class="text-mb_black print:hidden">▶</span> @interaksiyon.bu</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- TWO COLUMN LAYOUT FOR WEB -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 print:block">
+            
+            <!-- LEFT COLUMN (Main Content) -->
+            <div class="lg:col-span-2 space-y-12">
+                
+                <!-- PROFESSIONAL SUMMARY -->
+                <section id="summary" class="scroll-mt-10">
+                    <h3 class="font-brutal text-3xl uppercase text-mb_black bg-mb_yellow inline-block px-4 py-2 mb-6 font-bold -skew-x-3 print:skew-x-0 print:border-black print:bg-white print:text-black">
+                        Professional Summary
+                    </h3>
+                    <div class="text-gray-300 leading-relaxed space-y-4 font-clean text-lg print:text-black">
+                        <p>
+                            Game Developer (Age: 22) with a background in digital media, design, and video production. I have been exploring digital tools, art, and programming since I was very young. This lifelong habit of producing and creating things helped me build a wide range of skills early on. I transitioned into game development because of my passion for creating interactive projects. I focus on building functional systems, robust architectures, and clean user experiences.
+                        </p>
+                        <p class="border-l-2 border-mb_pink pl-4 print:border-black">
+                            I am a hardworking and honest programmer. I do not claim to know everything perfectly, but I have a strong foundation in logic and problem solving. I use AI frequently as a tool, but I do not do "vibe coding". When I use AI, I make sure to manually read the code, watch tutorials, and fully understand the structures so I can build and manage things myself.
+                        </p>
+                        <p>
+                            I am highly dedicated to my work, typically spending almost 10 to 13 hours on weekdays and 17 to 20 hours on weekends to solve technical problems, learn, and build my projects. I am looking for a role where I can use my different skills, be part of a team, and continue to learn and grow.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- PROFESSIONAL EXPERIENCE -->
+                <section id="experience" class="scroll-mt-10">
+                    <h3 class="font-brutal text-3xl uppercase text-mb_black bg-mb_pink inline-block px-4 py-2 mb-8 font-bold transform skew-x-2 print:skew-x-0 print:border-black print:bg-white print:text-black">
+                        Professional Experience
+                    </h3>
+                    
+                    <div class="space-y-10">
+                        <!-- Job 1 -->
+                        <div class="relative pl-6 border-l-4 border-mb_yellow print:border-black">
+                            <div class="absolute w-4 h-4 bg-mb_yellow -left-[10px] top-1 print:bg-black"></div>
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
+                                <h4 class="font-brutal text-2xl font-bold text-mb_white tracking-wide uppercase print:text-black">Co-Founder & Lead Developer</h4>
+                                <span class="font-mono text-mb_yellow font-bold text-sm bg-mb_gray px-2 py-1 print:bg-white print:text-black print:border print:border-black border border-mb_gray">2026 – Present</span>
+                            </div>
+                            <div class="text-mb_pink font-mono mb-4 text-lg print:text-black">The Lich Deck <span class="text-gray-400 text-sm italic print:text-black">(Independent Studio | METU ATOM Technopolis)</span></div>
+                            <ul class="space-y-2 text-gray-300 print:text-black">
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Co-founded a 2-person independent studio. I write the code, design the systems, and manage the technical side of our interactive digital products.</span></li>
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Defined and implemented the studio's core vision: crafting highly accessible, "toy-like" digital experiences. Engineered open-ended systems and interactive tools that encourage emergent gameplay, empowering players to invent their own playstyles and self-directed fun.</span></li>
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Successfully architected and developed a growing portfolio consisting of <strong class="text-white print:text-black">1 complete, release-ready title</strong>, <strong class="text-white print:text-black">1 upcoming game in active development</strong>, alongside 2 full demos and 6 functional prototypes.</span></li>
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Work closely with a 2D artist. I take their visual assets and turn them into clean, working user interfaces and functional logic.</span></li>
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Gained practical knowledge of digital distribution platforms (Steam ecosystem). I learned how the market works, what users demand, and how to position a product effectively.</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Job 2 -->
+                        <div class="relative pl-6 border-l-4 border-mb_yellow print:border-black">
+                            <div class="absolute w-4 h-4 bg-mb_yellow -left-[10px] top-1 print:bg-black"></div>
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
+                                <h4 class="font-brutal text-2xl font-bold text-mb_white tracking-wide uppercase print:text-black">Partner & Lead Developer</h4>
+                                <span class="font-mono text-mb_yellow font-bold text-sm bg-mb_gray px-2 py-1 print:bg-white print:text-black print:border print:border-black border border-mb_gray">2025 – 2026</span>
+                            </div>
+                            <div class="text-mb_pink font-mono mb-4 text-lg print:text-black">Chaos Advice <span class="text-gray-400 text-sm italic print:text-black">(Independent Studio | METU ATOM Technopolis)</span></div>
+                            <ul class="space-y-2 text-gray-300 print:text-black">
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Partnered in a 5-person team as the lead developer. We created 1 full demo and 5 interactive prototypes entirely using <strong class="text-white print:text-black">Unity and C#</strong>.</span></li>
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Managed the technical problems and connected the artistic ideas with the programming rules in a larger team setting.</span></li>
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Used the flexible studio environment as an R&D opportunity to research and learn new languages and engines. This continuous learning helped me build the foundation for my next studio.</span></li>
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Worked very long hours, spending almost 10 to 13 hours on weekdays and 17 to 20 hours on weekends, mostly to learn the job, improve myself, and gain real experience.</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Job 3 -->
+                        <div class="relative pl-6 border-l-4 border-mb_yellow print:border-black">
+                            <div class="absolute w-4 h-4 bg-mb_yellow -left-[10px] top-1 print:bg-black"></div>
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
+                                <h4 class="font-brutal text-2xl font-bold text-mb_white tracking-wide uppercase leading-tight print:text-black">Freelance Multimedia Specialist<br><span class="text-xl">& Documentary Production</span></h4>
+                                <span class="font-mono text-mb_yellow font-bold text-sm bg-mb_gray px-2 py-1 mt-2 sm:mt-0 print:bg-white print:text-black print:border print:border-black border border-mb_gray">2021 – 2024</span>
+                            </div>
+                            <div class="text-mb_pink font-mono mb-4 text-lg print:text-black">TRT1 & Independent Clients</div>
+                            <ul class="space-y-2 text-gray-300 print:text-black">
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Worked on human and nature documentaries for TRT1 (National Broadcasting Network). Managed professional camera work, lighting, and visual storytelling.</span></li>
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Directed and produced commercial videos. Used my knowledge of screenwriting and professional photography for freelance projects over 3 years.</span></li>
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span>Created custom graphic designs and niche, underground visual content using tools like Photoshop and Aseprite.</span></li>
+                                <li class="flex items-start gap-2"><span class="text-mb_yellow font-bold mt-1 print:text-black">×</span> <span class="text-mb_white font-medium print:text-black">I use this deep visual and media experience today to create better User Experiences (UX) and clean, aesthetically pleasing interfaces in my software projects.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- KEY TECHNICAL PROJECTS -->
+                <section id="projects" class="print:break-before-page scroll-mt-10">
+                    <h3 class="font-brutal text-3xl uppercase text-mb_black bg-mb_white inline-block px-4 py-2 mb-8 font-bold print:border-black print:bg-white print:text-black">
+                        Key Technical Projects
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 gap-6">
+                        <!-- Project 1 -->
+                        <div class="bg-mb_gray brutal-border p-6 border border-[#444] print:bg-white print:border-black">
+                            <h4 class="font-brutal text-2xl font-bold text-mb_yellow tracking-wide uppercase mb-1 print:text-black">Custom Build/Export Automation Tool</h4>
+                            <div class="font-mono text-sm text-mb_pink mb-4 print:text-black">Role: Sole Developer | Tech: Python, JavaScript</div>
+                            <ul class="space-y-2 text-gray-300 text-sm font-clean print:text-black">
+                                <li><strong class="text-white print:text-black">Overview:</strong> Made a utility program to automate the build and export process for Löve2D projects.</li>
+                                <li><strong class="text-white print:text-black">Technical Challenges:</strong> Needed a fast way to package files without doing it manually every time during active development.</li>
+                                <li><strong class="text-white print:text-black">Solutions:</strong> Learned how to use Python and JavaScript to handle file systems and create a working tool that saves time and reduces errors.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="bg-mb_gray brutal-border p-6 border border-[#444] print:bg-white print:border-black">
+                            <h4 class="font-brutal text-2xl font-bold text-mb_yellow tracking-wide uppercase mb-1 print:text-black">Datamancer (Optimization & UX Focus)</h4>
+                            <div class="font-mono text-sm text-mb_pink mb-4 print:text-black">Role: Sole Programmer, UI/UX Designer | Tech: Löve2D, Lua</div>
+                            <ul class="space-y-2 text-gray-300 text-sm font-clean print:text-black">
+                                <li><strong class="text-white print:text-black">Overview:</strong> A heavy text-based simulation that required managing continuous streams of data and lists.</li>
+                                <li><strong class="text-white print:text-black">Technical Challenges:</strong> Rendering non-stop text caused major performance drops and made the UX very tiring for the player. Additionally, constantly pulling random text from lists while scenes played out was logically complex.</li>
+                                <li><strong class="text-white print:text-black">Solutions:</strong> Solved the performance problem by separating the visuals from the logic. Instead of drawing everything, I built a mathematical simulation that processed lists and workflows in the background without rendering them. I also redesigned the UI panels to make the data much easier to read and understand.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="bg-mb_gray brutal-border p-6 border border-[#444] print:bg-white print:border-black">
+                            <h4 class="font-brutal text-2xl font-bold text-mb_yellow tracking-wide uppercase mb-1 print:text-black">3 Bug Bullet (Procedural Animation)</h4>
+                            <div class="font-mono text-sm text-mb_pink mb-4 print:text-black">Role: Lead Programmer, UX Designer | Tech: Löve2D, Lua</div>
+                            <ul class="space-y-2 text-gray-300 text-sm font-clean print:text-black">
+                                <li><strong class="text-white print:text-black">Overview:</strong> An action prototype that needed dynamic, organic enemy movements.</li>
+                                <li><strong class="text-white print:text-black">Technical Challenges:</strong> Standard animations were not enough for the bug-like movements I wanted, requiring dynamic procedural animation.</li>
+                                <li><strong class="text-white print:text-black">Solutions:</strong> I learned and implemented Inverse Kinematics (IK) for the enemies from scratch. I had previously used IK within Godot, but building it from scratch in Löve2D (using AI as a learning and problem-solving partner) helped me deeply understand the technical differences between using a full game engine and a code-based framework.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Project 4 -->
+                        <div class="bg-mb_gray brutal-border p-6 border border-[#444] print:bg-white print:border-black">
+                            <h4 class="font-brutal text-2xl font-bold text-mb_yellow tracking-wide uppercase mb-1 print:text-black">Project Delivery (Physics & Game Feel)</h4>
+                            <div class="font-mono text-sm text-mb_pink mb-4 print:text-black">Role: Lead Developer | Tech: Unity, C#</div>
+                            <ul class="space-y-2 text-gray-300 text-sm font-clean print:text-black">
+                                <li><strong class="text-white print:text-black">Overview:</strong> A liminal cargo delivery game centered around truck driving. The goal was to build a strong atmosphere combined with satisfying driving mechanics.</li>
+                                <li><strong class="text-white print:text-black">Technical Challenges:</strong> Pure physics simulations are often not fun for players and cost a lot of performance. I needed to gamify the simulation so the truck felt realistic and heavy without using overly complex real world physics math.</li>
+                                <li><strong class="text-white print:text-black">Solutions:</strong> I built a semi-physics-based vehicle controller. Instead of pure simulation, I used math tricks, visual feedback, and sensory tweaks to create "fake" physics. This made the truck feel heavy and realistic to the player while keeping the code highly optimized and the gameplay actually fun.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Project 5 -->
+                        <div class="bg-mb_gray brutal-border p-6 border border-[#444] print:bg-white print:border-black">
+                            <h4 class="font-brutal text-2xl font-bold text-mb_yellow tracking-wide uppercase mb-1 print:text-black">PikiPop (Enemy AI & Tech Art)</h4>
+                            <div class="font-mono text-sm text-mb_pink mb-4 print:text-black">Role: Sole Developer | Tech: Godot, GDScript</div>
+                            <ul class="space-y-2 text-gray-300 text-sm font-clean print:text-black">
+                                <li><strong class="text-white print:text-black">Overview:</strong> A roguelike dungeon delving game inspired by classic "Bubble Trouble". I also used this project to learn what Technical Art is by writing my own visual shaders from scratch.</li>
+                                <li><strong class="text-white print:text-black">Technical Challenges:</strong> At first, the bubble enemies just bounced around the screen randomly using basic physics. It did not feel like a real game, and the enemies lacked intelligence or purpose.</li>
+                                <li><strong class="text-white print:text-black">Solutions:</strong> I wrote conditional behaviors and a state machine for the enemies. I programmed them to act differently based on their size and the specific monster inside the bubble. For example, some enemies now pause in mid-air, calculate the player's position, and dash directly at them. If they miss, they enter a "rage" state and trigger a rapid attack sequence. This changed them from random bouncing objects into smart, challenging enemies with meaningful pathfinding.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN (Sidebar Details) -->
+            <div class="space-y-12">
+                
+                <!-- CORE COMPETENCIES -->
+                <section id="skills" class="scroll-mt-10">
+                    <h3 class="font-brutal text-2xl uppercase text-mb_black bg-mb_yellow inline-block px-3 py-1 mb-6 font-bold print:border-black print:bg-white print:text-black">
+                        Core Competencies
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-brutal text-xl text-mb_pink uppercase mb-2 border-b border-[#333] pb-1 print:text-black print:border-black">Languages</h4>
+                            <ul class="space-y-1 text-gray-300 text-sm font-clean print:text-black">
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span><strong class="text-white print:text-black">Experienced:</strong> Lua, Python, GDScript</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span><strong class="text-white print:text-black">Actively Using/Learning:</strong> Lua, JavaScript, GML</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span><strong class="text-white print:text-black">Prior Experience:</strong> C#, C++</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-brutal text-xl text-mb_pink uppercase mb-2 border-b border-[#333] pb-1 print:text-black print:border-black">Software Engineering</h4>
+                            <ul class="space-y-1 text-gray-300 text-sm font-clean print:text-black">
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>Object-Oriented Programming (OOP)</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>System Architecture & Optimization</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>Custom Tool Creation</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>Algorithmic Thinking</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-brutal text-xl text-mb_pink uppercase mb-2 border-b border-[#333] pb-1 print:text-black print:border-black">AI Integration & Tooling</h4>
+                            <ul class="space-y-1 text-gray-300 text-sm font-clean print:text-black">
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span><strong class="text-white print:text-black">Models:</strong> Gemini, Codex, Local LLMs</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span><strong class="text-white print:text-black">Local Hosting:</strong> Capable of setting up, configuring, and running AI models directly on local hardware.</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span><strong class="text-white print:text-black">Environment Setup:</strong> Connecting AI tools into Open Code and other software to build efficient, customized coding workflows.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-brutal text-xl text-mb_pink uppercase mb-2 border-b border-[#333] pb-1 print:text-black print:border-black">Frameworks & Engines</h4>
+                            <ul class="space-y-1 text-gray-300 text-sm font-clean print:text-black">
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>Löve2D, GameMaker Studio</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>Unity, Godot, SDL</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-brutal text-xl text-mb_pink uppercase mb-2 border-b border-[#333] pb-1 print:text-black print:border-black">Cross-Disciplinary</h4>
+                            <ul class="space-y-1 text-gray-300 text-sm font-clean print:text-black">
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>Adobe Photoshop, Aseprite (Pixel Art)</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>UI/UX & Visual Design</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>Video Production & Cinematography</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>User Psychology</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-brutal text-xl text-mb_pink uppercase mb-2 border-b border-[#333] pb-1 print:text-black print:border-black">Product & Strategy</h4>
+                            <ul class="space-y-1 text-gray-300 text-sm font-clean print:text-black">
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>Digital Distribution (Steam ecosystem)</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>Market Research</li>
+                                <li><span class="text-mb_yellow mr-2 print:hidden">▪</span>User Behavior Analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- COMMUNITY & CONTINUOUS LEARNING -->
+                <section>
+                    <h3 class="font-brutal text-2xl uppercase text-mb_black bg-mb_yellow inline-block px-3 py-1 mb-6 font-bold print:border-black print:bg-white print:text-black">
+                        Community & Learning
+                    </h3>
+                    <div class="bg-mb_gray p-5 border-l-4 border-mb_pink print:bg-white print:border-black">
+                        <ul class="space-y-4 text-gray-300 text-sm font-clean print:text-black">
+                            <li>
+                                <strong class="text-mb_white block text-base font-brutal uppercase tracking-wider mb-1 print:text-black">METU ATOM Technopolis Ecosystem:</strong>
+                                Both my current and previous studios are based inside the METU ATOM (Animation Technologies and Game Development Center) ecosystem. It is a highly valuable hub filled with creators from different disciplines. The center helps connect local teams to global events like Gamescom and Tokyo Game Show. Being here gives me the chance to constantly communicate with successful peers and learn from visiting industry veterans, such as Bilgem Çakır.
+                            </li>
+                            <li>
+                                <strong class="text-mb_white block text-base font-brutal uppercase tracking-wider mb-1 print:text-black">Industry Engagement:</strong>
+                                I actively participate in Global Game Jams and attend design, marketing, and development workshops to keep my skills sharp.
+                            </li>
+                            <li>
+                                <strong class="text-mb_white block text-base font-brutal uppercase tracking-wider mb-1 print:text-black">Learning Approach:</strong>
+                                I watch tutorials, actively read code, and try to build connections between different disciplines. I am highly open to learning new things and gaining more practical experience.
+                            </li>
+                            <li>
+                                <strong class="text-mb_white block text-base font-brutal uppercase tracking-wider mb-1 print:text-black">Spoken Languages:</strong>
+                                Turkish (Native) <br>
+                                English (B2/C1 Professional Working Proficiency, still learning and improving).
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- DECORATIVE FOOTER ELEMENT -->
+                <div class="pt-8 flex justify-center opacity-50 print:hidden reveal-base">
+                    <a href="https://steamcommunity.com/id/Interaksiyon/" target="_blank" title="My Steam Profile" class="text-mb_yellow font-gothic text-4xl hover:scale-150 transition-all duration-300 hover:text-mb_pink cursor-pointer inline-block transform hover:-rotate-12">
+                        ⚔
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Scroll Reveal Logic (Intersection Observer)
+            const observerOptions = {
+                threshold: 0.05,
+                rootMargin: "0px 0px -20px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, observerOptions);
+
+            // Select elements to reveal and observe them
+            const elementsToReveal = document.querySelectorAll('section, .brutal-border, .border-l-4');
+            elementsToReveal.forEach(el => {
+                el.classList.add('reveal-base');
+                observer.observe(el);
+            });
+
+            // 2. Add Interactive hover effects to all lists automatically
+            document.querySelectorAll('ul.space-y-2').forEach(ul => {
+                ul.classList.add('list-hover-fx');
+            });
+
+            // 3. 3D Reactive Hover for Project Cards
+            const cards = document.querySelectorAll('.brutal-border');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    // Prevent 3D effect on mobile for better performance
+                    if (window.innerWidth < 768) return; 
+
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left; // x position within the element
+                    const y = e.clientY - rect.top;  // y position within the element
+                    
+                    // Calculate rotation based on cursor position (-8 to 8 degrees max)
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -8; 
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    
+                    // Apply 3D transform while keeping the brutalist scale
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate(4px, 4px) scale(1.02)`;
+                    card.style.boxShadow = `3px 3px 0px 0px #ff007f`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    // Reset inline styles so CSS classes take back over
+                    card.style.transform = '';
+                    card.style.boxShadow = '';
+                });
+            });
+
+            // 4. Contact Block Toggle Logic
+            const contactBlock = document.getElementById('contact-block');
+            const contactHeader = document.getElementById('contact-header');
+            const contactStatus = document.getElementById('contact-status');
+            let contactLocked = false;
+            
+            contactHeader.addEventListener('click', (e) => {
+                contactLocked = !contactLocked;
+                if (contactLocked) {
+                    contactBlock.classList.add('locked');
+                    contactStatus.innerText = '[LOCKED OPEN]';
+                    contactStatus.classList.add('text-mb_yellow', 'opacity-100');
+                    contactStatus.classList.remove('opacity-0');
+                } else {
+                    contactBlock.classList.remove('locked');
+                    contactStatus.innerText = '[CLICK TO UNLOCK ALL]';
+                    contactStatus.classList.remove('text-mb_yellow', 'opacity-100');
+                    contactStatus.classList.add('opacity-0');
+                }
+            });
+
+            // 5. Clipboard Logic for Emails
+            const copyableEmails = document.querySelectorAll('.copyable-email');
+            copyableEmails.forEach(email => {
+                email.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const textToCopy = email.getAttribute('data-email');
+                    
+                    // Fallback clipboard logic due to iFrame restrictions
+                    const textArea = document.createElement("textarea");
+                    textArea.value = textToCopy;
+                    textArea.style.position = "fixed";
+                    textArea.style.top = "-999px";
+                    textArea.style.left = "-999px";
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    
+                    try {
+                        document.execCommand('copy');
+                        
+                        // Visual feedback
+                        const originalHTML = email.innerHTML;
+                        email.innerHTML = '<span class="text-mb_black print:hidden">▶</span> [ COPIED! ]';
+                        setTimeout(() => {
+                            email.innerHTML = originalHTML;
+                        }, 1500);
+                    } catch (err) {
+                        console.error('Copy failed', err);
+                    }
+                    
+                    document.body.removeChild(textArea);
+                });
+            });
+
+            // 6. Custom Slower Smooth Scrolling for Index Links
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // Custom scroll animation logic
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 40; // 40px offset for top padding
+                        const startPosition = window.pageYOffset;
+                        const distance = targetPosition - startPosition;
+                        const duration = 1200; // 1.2 seconds for a noticeably slower, dramatic scroll
+                        let startTime = null;
+
+                        // Easing function (easeInOutCubic) for a juicy start and end
+                        function ease(t, b, c, d) {
+                            t /= d / 2;
+                            if (t < 1) return c / 2 * t * t * t + b;
+                            t -= 2;
+                            return c / 2 * (t * t * t + 2) + b;
+                        }
+
+                        function animation(currentTime) {
+                            if (startTime === null) startTime = currentTime;
+                            const timeElapsed = currentTime - startTime;
+                            const run = ease(timeElapsed, startPosition, distance, duration);
+                            
+                            window.scrollTo(0, run);
+                            
+                            if (timeElapsed < duration) {
+                                requestAnimationFrame(animation);
+                            }
+                        }
+
+                        requestAnimationFrame(animation);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
